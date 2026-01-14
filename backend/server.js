@@ -6,6 +6,7 @@ const incomeRoute = require("./routes/incomeRoute.js");
 const expenceRoute = require("./routes/expenceRoute.js");
 const financeRoutes = require("./routes/finance.js");
 const authRoutes = require("./routes/auth.js");
+const dashboardRoutes = require("./routes/dashboard.js");
 
 
 
@@ -23,6 +24,7 @@ app.use("/api/income", incomeRoute);
 app.use("/api/expence", expenceRoute);
 app.use("/api/finance", financeRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 
 app.listen(port, () => {
     console.log(`server is running as http://localhost:${port}`)

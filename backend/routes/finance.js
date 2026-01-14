@@ -1,13 +1,17 @@
 const express = require("express");
 const Income = require("../models/income.js");
 const Expense = require("../models/Expense");
+const protect = require("../middleware/authmiddleware.js");
 
 const router = express.Router();
 
-// GET summary: income, expense, balance
-router.get("/summary", async (req, res) => {
+// GET summary: income, expense, balance (protected)
+router.get("/summary", protect, async (req, res) => {
     try {
         const totalIncome = await Income.aggregate([
+            {
+                $match: { user: req.user }
+            },
             {
                 $group: {
                     _id: null,
@@ -17,6 +21,9 @@ router.get("/summary", async (req, res) => {
         ]);
 
         const totalExpense = await Expense.aggregate([
+            {
+                $match: { user: req.user }
+            },
             {
                 $group: {
                     _id: null,
@@ -37,7 +44,7 @@ router.get("/summary", async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
-router.get("/transactions", async (req, res) => {
+router.get("/transactions", protect, async (req, res) => {
     try {
         const incomes = await Income.find({ user: req.user }).lean();
         const expenses = await Expense.find({ user: req.user }).lean();

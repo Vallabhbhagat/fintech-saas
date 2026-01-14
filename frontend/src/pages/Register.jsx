@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import * as api from '../services/api'
 
 const Register = () => {
   const navigate = useNavigate();
@@ -8,36 +9,47 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleRegister = async () => {
-    const res = await fetch("http://localhost:5050/api/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ name, email, password })
-    });
-
-    alert("Registered successfully!");
-    navigate("/");
-    setEmail("");
-    setName("");
-    setPassword("");
+  const handleRegister = async (e) => {
+    e.preventDefault()
+    try {
+      await api.register(name, email, password)
+      alert("Registered successfully!")
+      navigate("/")
+      setEmail("")
+      setName("")
+      setPassword("")
+    } catch (err) {
+      alert('Registration failed')
+    }
   }
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Register Page</h2>
+    <div className="login-wrapper">
+      <div className="login-card">
+        <h2 style={{marginTop:0}}>Register</h2>
+        <form onSubmit={handleRegister} style={{display:'grid',gap:12}}>
+          <div>
+            <label style={{display:'block',marginBottom:6}}>Name</label>
+            <input value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="Your name" required />
+          </div>
 
-      <input onChange={(e) => setName(e.target.value)} type="text" placeholder="Name" /><br /><br />
-      <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" /><br /><br />
-      <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" /><br /><br />
+          <div>
+            <label style={{display:'block',marginBottom:6}}>Email</label>
+            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="you@example.com" required />
+          </div>
 
-      <button onClick={handleRegister}>Register</button>
+          <div>
+            <label style={{display:'block',marginBottom:6}}>Password</label>
+            <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="********" required />
+          </div>
 
-      <p>
-        Already have an account?
-        <Link to="/"> Login</Link>
-      </p>
+          <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:12}}>
+            <button type="submit">Register</button>
+            <small style={{color:'var(--muted)'}}>Already have an account? <Link to="/">Login</Link></small>
+          </div>
+        </form>
+        <div className="login-footer">Powered by SinovaX</div>
+      </div>
     </div>
   )
 }

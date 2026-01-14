@@ -1,0 +1,68 @@
+.bottom-animation {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 2.5rem;
+}
+
+.bottom-animation__video {
+  display: none; /* use if you drop public/hero-loop.mp4 */
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.bottom-animation__svg {
+  display: block;
+  width: 100%;
+  height: 180px;
+}
+
+.wave {
+  transform-origin: center;
+}
+
+.wave1 {
+  animation: float 6s ease-in-out infinite;
+}
+
+.wave2 {
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.orbits .dot {
+  opacity: 0.95;
+}
+
+.orbits .d1 { animation: orbit 8s linear infinite; }
+.orbits .d2 { animation: orbit 7s linear infinite; }
+.orbits .d3 { animation: orbit 6s linear infinite; }
+.orbits .d4 { animation: orbit 10s linear infinite; }
+.orbits .d5 { animation: orbit 9s linear infinite; }
+
+@keyframes orbit {
+  0% { transform: translateY(0) translateX(0) scale(1); opacity:0.95 }
+  50% { transform: translateY(-10px) translateX(6px) scale(1.05); opacity:0.8 }
+  100% { transform: translateY(0) translateX(0) scale(1); opacity:0.95 }
+}
+
+/* make sure it sits visually at the bottom of the page content */
+.bottom-animation { padding-bottom: 1rem }
+
+/* Lottie container */
+.bottom-animation__lottie {
+  width: 100%;
+  height: 220px;
+  display: block;
+}
+
+/* small screens: reduce height */
+@media (max-width: 640px) {
+  .bottom-animation__lottie { height: 140px }
+}

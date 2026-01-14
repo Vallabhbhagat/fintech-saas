@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="480" viewBox="0 0 960 480">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1">
+      <stop offset="0%" stop-color="#0b4aa8"/>
+      <stop offset="100%" stop-color="#1e6fd8"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#000" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <!-- Blue background -->
+  <rect width="100%" height="100%" fill="url(#bg)" rx="12" />
+
+  <!-- Grid settings -->
+  <g transform="translate(60,50)">
+    <!-- each box: width 180, height 120, h-gap 40, v-gap 40 -->
+    <!-- Row 1 -->
+    <g>
+      <!-- 1 -->
+      <rect x="0" y="0" width="180" height="120" rx="12" fill="#ffffff" filter="url(#shadow)" />
+      <g transform="translate(90,40)" text-anchor="middle">
+        <!-- icon: flag for Goal Planner -->
+        <g transform="translate(-10,-8)">
+          <rect x="-14" y="-10" width="28" height="20" rx="4" fill="#6F2DBD"/>
+          <path d="M-14 10 L-14 -20" stroke="#6F2DBD" stroke-width="3" stroke-linecap="round"/>
+        </g>
+      </g>
+      <text x="90" y="150" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600">Goal Planner</text>
+
+      <!-- 2 -->
+      <rect x="220" y="0" width="180" height="120" rx="12" fill="#ffffff" filter="url(#shadow)" />
+      <g transform="translate(310,40)" text-anchor="middle">
+        <!-- icon: coin stack for SIP Counter -->
+        <g transform="translate(-10,-6)">
+          <ellipse cx="0" cy="6" rx="18" ry="6" fill="#6F2DBD"/>
+          <ellipse cx="0" cy="-2" rx="14" ry="5" fill="#6F2DBD"/>
+          <ellipse cx="0" cy="-10" rx="10" ry="4" fill="#6F2DBD"/>
+        </g>
+      </g>
+      <text x="310" y="150" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600">SIP Counter</text>
+
+      <!-- 3 -->
+      <rect x="440" y="0" width="180" height="120" rx="12" fill="#ffffff" filter="url(#shadow)" />
+      <g transform="translate(530,40)" text-anchor="middle">
+        <!-- icon: clipboard for Budget Planner -->
+        <g transform="translate(-10,-6)">
+          <rect x="-12" y="-12" width="24" height="28" rx="3" fill="#6F2DBD"/>
+          <rect x="-6" y="-6" width="12" height="4" fill="#ffffff"/>
+          <rect x="-6" y="2" width="12" height="4" fill="#ffffff"/>
+        </g>
+      </g>
+      <text x="530" y="150" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600">Budget Planner</text>
+
+      <!-- 4 -->
+      <rect x="660" y="0" width="180" height="120" rx="12" fill="#ffffff" filter="url(#shadow)" />
+      <g transform="translate(750,40)" text-anchor="middle">
+        <!-- icon: chart for Analytics -->
+        <g transform="translate(-10,-6)">
+          <rect x="-14" y="-10" width="28" height="22" rx="2" fill="#6F2DBD"/>
+          <path d="M-10 6 L-4 0 L2 6 L8 -2" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </g>
+      </g>
+      <text x="750" y="150" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600">Analytics</text>
+    </g>
+
+    <!-- Row 2 (y offset 170) -->
+    <g transform="translate(0,170)">
+      <!-- 5 -->
+      <rect x="0" y="0" width="180" height="120" rx="12" fill="#ffffff" filter="url(#shadow)" />
+      <g transform="translate(90,40)" text-anchor="middle">
+        <!-- icon: chat bubble for Chatbot -->
+        <g transform="translate(-10,-6)">
+          <path d="M-18 -2 a16 12 0 0 1 32 0 v8 a8 6 0 0 1 -8 6 h-8 l-8 8 z" fill="#6F2DBD"/>
+        </g>
+      </g>
+      <text x="90" y="150" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600">Chatbot</text>
+
+      <!-- 6 -->
+      <rect x="220" y="0" width="180" height="120" rx="12" fill="#ffffff" filter="url(#shadow)" />
+      <g transform="translate(310,40)" text-anchor="middle">
+        <!-- icon: dice/graph for Simulations -->
+        <g transform="translate(-10,-6)">
+          <circle cx="-6" cy="-2" r="8" fill="#6F2DBD"/>
+          <rect x="4" y="-8" width="12" height="12" rx="2" fill="#6F2DBD"/>
+        </g>
+      </g>
+      <text x="310" y="150" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600">Simulations</text>
+
+      <!-- 7 -->
+      <rect x="440" y="0" width="180" height="120" rx="12" fill="#ffffff" filter="url(#shadow)" />
+      <g transform="translate(530,40)" text-anchor="middle">
+        <!-- icon: minus/expense -->
+        <g transform="translate(-10,-6)">
+          <rect x="-12" y="-6" width="24" height="12" rx="2" fill="#6F2DBD"/>
+          <rect x="-6" y="-2" width="12" height="4" fill="#ffffff"/>
+        </g>
+      </g>
+      <text x="530" y="150" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600">Add Expense</text>
+
+      <!-- 8 -->
+      <rect x="660" y="0" width="180" height="120" rx="12" fill="#ffffff" filter="url(#shadow)" />
+      <g transform="translate(750,40)" text-anchor="middle">
+        <!-- icon: plus/income -->
+        <g transform="translate(-10,-6)">
+          <rect x="-6" y="-12" width="12" height="24" rx="2" fill="#6F2DBD"/>
+          <rect x="-12" y="-6" width="24" height="12" rx="2" fill="#6F2DBD"/>
+        </g>
+      </g>
+      <text x="750" y="150" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600">Add Income</text>
+    </g>
+  </g>
+</svg>
