@@ -1,19 +1,29 @@
 import React, { useState } from 'react'
+import { sendChatMessage } from '../services/api'
 
 const Chatbot = () => {
-  const [messages, setMessages] = useState([{from:'bot',text:'Hi! Ask me about budgeting or SIPs.'}])
+  const [messages, setMessages] = useState([{from:'bot',text:'Hi! Ask me about budgeting, saving, investing, or any financial topics.'}])
   const [text, setText] = useState('')
+  const [loading, setLoading] = useState(false)
 
-  const send = (e)=>{
+  const send = async (e)=>{
     e.preventDefault()
-    if(!text) return
+    if(!text.trim()) return
+    
     const user = {from:'user', text}
     setMessages(m=>[...m,user])
-    // simple mock response
-    setTimeout(()=>{
-      setMessages(m=>[...m,{from:'bot',text:`I heard: ${text}. (This is a mock reply)` }])
-    },400)
     setText('')
+    setLoading(true)
+
+    try {
+      const response = await sendChatMessage(text)
+      setMessages(m=>[...m,{from:'bot',text: response.reply}])
+    } catch(error) {
+      console.error('Error:', error)
+      setMessages(m=>[...m,{from:'bot',text:'Sorry, I encountered an error. Please try again.'}])
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -28,8 +38,8 @@ const Chatbot = () => {
           ))}
         </div>
         <form onSubmit={send} style={{marginTop:8,display:'flex',gap:8}}>
-          <input value={text} onChange={e=>setText(e.target.value)} placeholder="Type your question" />
-          <button>Send</button>
+          <input value={text} onChange={e=>setText(e.target.value)} placeholder="Type your question" disabled={loading} />
+          <button disabled={loading}>{loading ? 'Loading...' : 'Send'}</button>
         </form>
       </div>
     </div>

@@ -70,4 +70,15 @@ export async function deleteExpense(id){
   return request(`/expence/${id}`, {method:'DELETE'}) 
 }
 
-export default { login, register, getSummary, getTransactions, addExpense, addIncome, deleteExpense, deleteIncome, updateExpense, updateIncome }
+// Chatbot API
+export async function sendChatMessage(message){
+  const res = await fetch('http://localhost:5000/chat', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({message})
+  })
+  if (!res.ok) throw new Error('Chatbot request failed')
+  return res.json()
+}
+
+export default { login, register, getSummary, getTransactions, addExpense, addIncome, deleteExpense, deleteIncome, updateExpense, updateIncome, sendChatMessage }

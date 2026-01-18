@@ -7,7 +7,7 @@ CORS(app)   # allow React to connect
 
 @app.route("/")
 def home():
-    return "flask server is running"
+    return "Flask chatbot server is running"
 
 @app.route("/chat", methods=["POST"])
 def chat():
@@ -19,7 +19,7 @@ def chat():
     return jsonify({"reply": bot_reply})
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
 
 
 
